@@ -1,3 +1,26 @@
+
+En la presente actividad vamos a tener un primer acercamiento a GIT, el sistema de control de versiones más utilizado hoy en día para gestionar nuestros proyectos y especialmente para tener un portafolio y colaborar con otros proyectos.
+
+En los siguientes videos vas a ver una explicación rápida y resumida de qué es GIT, y para la presente actividad vamos a trabajar en su uso, para ello debes:
+
+1. Tener la cuenta GITHUB creada, ya sea con la cuenta institucional o con una cuenta personal.
+
+2. Revisar el material sobre GIT donde se inicia en los primeros pasos
+
+3. Crear un repositorio y subir la actividad desarrollada en la consulta de la librería Numpy de Python
+
+4. Documentar el proceso en un informe y subirlo a esta actividad con el link del repositorio creado.
+
+
+1.	Cuenta de Github: https://github.com/LufwgDev
+2.	✓
+3.	https://github.com/LufwgDev/NumpyUIS
+
+4.	Documentación del proceso:
+
+Ya que Numpy es una “librería adicional” (no viene con la instalación original de Python) debemos instalarlo posteriormente a haber instalado Python
+Se usa en la terminal el comando:
+
 pip install numpy
 //Defaulting to user installation because normal site-packages is not writeable
 //Collecting numpy
@@ -11,3 +34,161 @@ pip install numpy
 //
 //[notice] A new release of pip is available: 24.3.1 -> 25.0.1
 //[notice] To update, run: C:\Users\Estudiante\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -m pip install --upgrade pip
+
+ 
+Luego de realizar la instalación de GitHub
+Abrimos Git Bash y agregamos los siguientes comandos:
+Para revisar la versión de git instalada y con esto ver si la instalación fue correcta:
+git -–version
+si no reconociese el comando git quizá haga falta reiniciar el dispositivo para finalizar completamente la instalación, nos debe aparecer algo como
+//git version 2.48.1.windows.1
+
+
+
+Luego ajusto mi nombre de usuario y correo, esto para que cuando hagamos algún cambio quede registrado quién lo efectuó
+ git config --global user.name "LufwgDev"
+git config --global user.email lufwg@proton.me
+ 
+No nos debe aparecer nada en consola tras agregar dichos comandos.
+Los otros dos comandos agregados son 
+git config --global core.editor "code --wait"
+que es opcional y sólo es para indicar que queremos que Visual Studio Code sea nuestro editor de texto por defecto, la opción de “—wait” es para que la terminal se “quede esperando” hasta que nosotros cerremos nuestro editor de texto (el archivo “.gitconfig”)
+git config --global core.autocrlf true
+recomendable agregar esta configuración en Windows para evitar problemas de conflicto por el formato utilizado por Windows versus el resto de dispositivos para insertar un salto de línea.
+Para revisar todos los archivos y carpetas que hay dentro de la carpeta en la que nos encontramos
+ls
+
+la terminal nos muestra:
+// AppData/
+//'Configuración local'@
+// Contacts/
+// Cookies@
+//'Datos de programa'@
+// Desktop/
+// Documents/
+// Downloads/
+//'Entorno de red'@
+// Favorites/
+// Impresoras@
+// Links/
+//'Menú Inicio'@
+//'Mis documentos'@
+// Music/
+// NTUSER.DAT
+// NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TM.blf
+// NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000001.regtrans-ms
+// NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000002.regtrans-ms
+// OneDrive/
+// Pictures/
+// Plantillas@
+// Reciente@
+//'Saved Games'/
+// Searches/
+// SendTo@
+// Videos/
+// ntuser.dat.LOG1
+// ntuser.dat.LOG2
+// ntuser.ini
+
+
+Elegimos la carpeta en la cual queremos crear nuestro proyecto y nos “trasladamos a ella”
+cd Desktop/
+
+luego creamos la carpeta con el nombre del proyecto que vamos a trabajar.
+pasamos a dicha carpeta:
+mkdir NumpyUIS
+
+inicializamos el proyecto:
+git init
+//Initialized empty Git repository in C:/Users/Estudiante/Downloads/NumpyUIS/.git/
+
+para mostrar el estado actual del repositorio:
+git status
+
+//On branch master
+//
+//No commits yet
+//
+//nothing to commit (create/copy files and use "git add" to track)
+//
+
+Abrir el proyecto en Visual Studio Code:
+code .
+
+se crean las diferentes carpetas y archivos
+
+mkdir Docs
+. . . (se realizan los demás cambios que se quieren, se realiza el proyecto)
+
+ git status
+
+//On branch master
+//
+//No commits yet
+//
+//Untracked files:
+//  (use "git add <file>..." to include in what will be committed)
+//        Docs/
+//        Exercise1.py
+//        Exercise2.py
+//        NumpyTutorial.py
+//        README.md
+//
+//nothing added to commit but untracked files present (use "git add" to track)
+//
+
+Agregamos a Stage los cambios realizados:
+git add Exercise1.py Exercise2.py NumpyTutorial.py README.md
+git add Docs/
+
+los cambios habrán pasado a Stage listos para ser comprometidos
+git status
+//On branch master
+//
+//No commits yet
+//
+//Changes to be committed:
+//  (use "git rm --cached <file>..." to unstage)
+//        new file:   Docs/Commands.log
+//        new file:   Docs/installNumpy.png
+//        new file:   Exercise1.py
+//        new file:   Exercise2.py
+//        new file:   NumpyTutorial.py
+//        new file:   README.md
+//
+
+git commit -m "Initial commit"
+
+//[master (root-commit) 9c87be0] Initial commit
+// 6 files changed, 355 insertions(+)
+// create mode 100644 Docs/Commands.log
+// create mode 100644 Docs/installNumpy.png
+// create mode 100644 Exercise1.py
+// create mode 100644 Exercise2.py
+// create mode 100644 NumpyTutorial.py
+// create mode 100644 README.md
+
+ahora creamos el repositorio en github para poder subir nuestros commits
+en https://github.com/ luego de iniciar sesión con nuestra cuenta
+en la esquina superior izquierda aparece un botón verde que con letras blancas dice New (y tiene el emoticono de un libro con un separador de páginas) 
+
+al darle click nos va a llevar a https://github.com/new
+
+Luego de elegir el nombre, damos click sobre el botón de las mismas características al antes descrito, pero que está vez tiene el texto “Create repository”.
+
+Agregamos en Git Bash los comandos que en la pagina de nuestro repositorio nos sugieren como
+
+git remote add origin https://github.com/LufwgDev/Numpy_UIS.git
+git branch -M main
+git push -u origin main
+//Enumerating objects: 9, done.
+//Counting objects: 100% (9/9), done.
+//Delta compression using up to 20 threads
+//Compressing objects: 100% (9/9), done.
+//Writing objects: 100% (9/9), 39.58 KiB | 19.79 MiB/s, done.
+//Total 9 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+//To https://github.com/LufwgDev/Numpy_UIS.git
+// * [new branch]      main -> main
+//branch 'main' set up to track 'origin/main'.
+
+ya se habrá subido correctamente nuestros commits al repositorio en GitHub
