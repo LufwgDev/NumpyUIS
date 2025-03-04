@@ -60,3 +60,160 @@ print("size",c.size)
 
 import math
 print(c.size==math.prod(c.shape)) #True
+import numpy as np
+import math
+
+# ============================================================
+# Funciones para Operaciones Aritméticas Elementales
+# ============================================================
+
+# Suma, resta, multiplicación y división elemento a elemento
+v1 = np.array([1, 2, 3])
+v2 = np.array([4, 5, 6])
+print("v1:", v1)
+print("v2:", v2)
+
+# Suma: np.add() o el operador +
+suma = np.add(v1, v2)  
+print("Suma (np.add):", suma)  # [5 7 9]
+
+# Resta: np.subtract() o el operador -
+resta = np.subtract(v2, v1)
+print("Resta (np.subtract):", resta)  # [3 3 3]
+
+# Multiplicación elemento a elemento: np.multiply() o el operador *
+multiplicacion = np.multiply(v1, v2)
+print("Multiplicación (np.multiply):", multiplicacion)  # [4 10 18]
+
+# División elemento a elemento: np.divide() o el operador /
+division = np.divide(v2, v1)
+print("División (np.divide):", division)  # [4. 2.5 2.]
+
+# ============================================================
+# Funciones Estadísticas Básicas
+# ============================================================
+
+# Creamos una matriz de ejemplo
+mat = np.array([[1, 2, 3], [4, 5, 6]])
+print("\nMatriz mat:\n", mat)
+
+# Suma total de elementos: np.sum()
+suma_total = np.sum(mat)
+print("Suma total (np.sum):", suma_total)  # 21
+
+# Media: np.mean()
+media = np.mean(mat)
+print("Media (np.mean):", media)  # 3.5
+
+# Desviación estándar: np.std()
+desviacion = np.std(mat)
+print("Desviación estándar (np.std):", desviacion)
+
+# Valor mínimo y máximo: np.min() y np.max()
+min_val = np.min(mat)
+max_val = np.max(mat)
+print("Mínimo (np.min):", min_val, ", Máximo (np.max):", max_val)
+
+# ============================================================
+# Funciones para Manipulación de Formas y Estructuras
+# ============================================================
+
+# Reshape: cambia la forma de un array sin cambiar sus datos
+arr = np.arange(12)  # Crea un array de 0 a 11
+print("\nArray original:", arr)
+arr_reshaped = arr.reshape(3, 4)  # 3 filas, 4 columnas
+print("Reshape (3x4):\n", arr_reshaped)
+
+# Transposición: intercambia filas por columnas
+transpuesta = np.transpose(arr_reshaped)
+print("Transpuesta:\n", transpuesta)
+
+# Concatenación: une arrays a lo largo de un eje
+a1 = np.array([[1, 2], [3, 4]])
+a2 = np.array([[5, 6], [7, 8]])
+concatenado = np.concatenate((a1, a2), axis=0)  # Concatenar verticalmente
+print("Concatenado vertical (axis=0):\n", concatenado)
+
+# También se pueden usar: np.vstack() y np.hstack()
+vstacked = np.vstack((a1, a2))  # Apila verticalmente
+hstacked = np.hstack((a1, a2))  # Apila horizontalmente
+print("vstack:\n", vstacked)
+print("hstack:\n", hstacked)
+
+# ============================================================
+# Funciones de Ordenamiento y Selección
+# ============================================================
+
+# Ordenar: np.sort() devuelve una copia ordenada del array
+unsorted = np.array([3, 1, 2])
+sorted_arr = np.sort(unsorted)
+print("\nArray sin ordenar:", unsorted)
+print("Array ordenado (np.sort):", sorted_arr)
+
+# Indices para ordenar: np.argsort() devuelve los índices que ordenarían el array
+indices_orden = np.argsort(unsorted)
+print("Indices de ordenamiento (np.argsort):", indices_orden)
+
+# Función única: np.unique() devuelve los valores únicos del array
+repetidos = np.array([1, 2, 2, 3, 3, 3])
+unique_vals = np.unique(repetidos)
+print("Valores únicos (np.unique):", unique_vals)
+
+# ============================================================
+# Funciones de Álgebra Lineal
+# ============================================================
+
+# Producto punto (dot product) de dos vectores
+vec1 = np.array([1, 2, 3])
+vec2 = np.array([4, 5, 6])
+dot_product = np.dot(vec1, vec2)
+print("\nProducto punto (np.dot):", dot_product)  # 1*4 + 2*5 + 3*6 = 32
+
+# Multiplicación de matrices: np.matmul() o el operador @ (desde Python 3.5+)
+m1 = np.array([[1, 2], [3, 4]])
+m2 = np.array([[5, 6], [7, 8]])
+mat_mult = np.matmul(m1, m2)
+print("Multiplicación de matrices (np.matmul):\n", mat_mult)
+# Alternativamente, se puede usar: m1 @ m2
+
+# Transposición ya vista, pero también es útil en álgebra lineal
+print("Transpuesta de m1:\n", m1.T)
+
+# Determinante: np.linalg.det()
+determinante = np.linalg.det(m1)
+print("Determinante de m1 (np.linalg.det):", determinante)
+
+# Inversa de una matriz: np.linalg.inv()
+if np.linalg.det(m1) != 0:
+    inversa = np.linalg.inv(m1)
+    print("Inversa de m1 (np.linalg.inv):\n", inversa)
+else:
+    print("La matriz m1 no es invertible.")
+
+# ============================================================
+# Funciones para Generación de Arrays y Matrices
+# ============================================================
+
+# np.arange: similar a range() pero devuelve un array
+arreglo_range = np.arange(0, 10, 2)
+print("\nnp.arange (0, 10, 2):", arreglo_range)
+
+# np.linspace: genera n números equidistantes en un intervalo
+linspace_arr = np.linspace(0, 1, 5)
+print("np.linspace (0, 1, 5):", linspace_arr)
+
+# np.zeros, np.ones, np.empty: crean arrays con valores iniciales fijos
+zeros = np.zeros((2, 3))
+ones = np.ones((2, 3))
+empty = np.empty((2, 3))  # Valores no inicializados (pueden ser cualquier cosa)
+print("np.zeros:\n", zeros)
+print("np.ones:\n", ones)
+print("np.empty:\n", empty)
+
+# np.eye: matriz identidad
+identity = np.eye(3)
+print("np.eye (Matriz identidad 3x3):\n", identity)
+
+# np.random.rand: genera un array con valores aleatorios entre 0 y 1
+rand_arr = np.random.rand(2, 3)
+print("np.random.rand (2x3):\n", rand_arr)
